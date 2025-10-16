@@ -1,26 +1,238 @@
+/* ----------------------------------------------
+   Import Tailwind
+   ---------------------------------------------- */
 @import "tailwindcss";
 
+/* ----------------------------------------------
+   Variables CSS Light/Dark
+   ---------------------------------------------- */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --card-bg: #ffffff;
+  --card-text: #1f2937;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card-bg: #1f2937; /* gris foncé pour les cartes */
+  --card-text: #f3f4f6; /* texte clair pour les cartes */
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ----------------------------------------------
+   Body global
+   ---------------------------------------------- */
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Texte sur fond du body */
+body > *:not(.project-card):not(.btn):not(nav):not(header):not(footer) {
+  color: var(--foreground);
+}
+
+/* ----------------------------------------------
+   Titres
+   ---------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold;
+  color: var(--foreground);
+  transition: color 0.3s;
+}
+
+/* Titres dans les cartes */
+.project-card h1,
+.project-card h2,
+.project-card h3,
+.project-card h4,
+.project-card h5,
+.project-card h6 {
+  color: var(--card-text);
+}
+
+/* ----------------------------------------------
+   Paragraphes
+   ---------------------------------------------- */
+p {
+  color: var(--foreground);
+  transition: color 0.3s;
+}
+
+.project-card p {
+  color: var(--card-text);
+}
+
+/* ----------------------------------------------
+   Liens globaux (hors boutons)
+   ---------------------------------------------- */
+a:not(.btn) {
+  @apply transition-colors;
+  color: #2563eb; /* blue-600 */
+}
+
+a:not(.btn):hover {
+  color: #1d4ed8; /* blue-700 */
+}
+
+html.dark a:not(.btn) {
+  color: #60a5fa; /* blue-400 */
+}
+
+html.dark a:not(.btn):hover {
+  color: #93c5fd; /* blue-300 */
+}
+
+/* ----------------------------------------------
+   Boutons (classe btn)
+   ---------------------------------------------- */
+.btn {
+  @apply px-4 py-2 rounded-lg transition-all;
+}
+
+.btn {
+  background-color: #2563eb; /* blue-600 */
+  color: #ffffff;
+}
+
+.btn:hover {
+  background-color: #1d4ed8; /* blue-700 */
+}
+
+html.dark .btn {
+  background-color: #60a5fa; /* blue-400 */
+  color: #1f2937; /* gris foncé pour texte */
+}
+
+html.dark .btn:hover {
+  background-color: #3b82f6; /* blue-500 */
+}
+
+/* ----------------------------------------------
+   Sections
+   ---------------------------------------------- */
+section {
+  @apply my-10;
+}
+
+/* ----------------------------------------------
+   Images
+   ---------------------------------------------- */
+img {
+  @apply rounded-lg shadow-md;
+}
+
+/* ----------------------------------------------
+   Project cards
+   ---------------------------------------------- */
+.project-card {
+  @apply rounded-xl shadow hover:shadow-lg transition-all p-4;
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+html.dark .project-card {
+  background-color: #1f2937; /* gris foncé */
+  color: #f3f4f6; /* texte clair */
+}
+
+.project-card h3 {
+  @apply font-semibold;
+}
+
+.project-card p {
+  @apply mb-3;
+}
+
+.project-card a {
+  @apply hover:underline transition-colors;
+}
+
+/* ----------------------------------------------
+   Inputs et Textarea
+   ---------------------------------------------- */
+input,
+textarea {
+  @apply border rounded-md p-2;
+  background-color: #ffffff;
+  border-color: #d1d5db; /* gray-300 */
+  color: #111827; /* gray-900 */
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+html.dark input,
+html.dark textarea {
+  background-color: #1f2937; /* gray-800 */
+  border-color: #374151; /* gray-700 */
+  color: #ededed;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af; /* gray-400 */
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #6b7280; /* gray-500 */
+}
+
+/* ----------------------------------------------
+   Navbar et boutons toggle
+   ---------------------------------------------- */
+nav,
+header {
+  background-color: var(--background);
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+html.dark nav,
+html.dark header {
+  border-bottom-color: #333;
+}
+
+nav a,
+header a {
+  color: var(--foreground);
+  transition: color 0.3s;
+}
+
+.theme-toggle,
+button[aria-label*="theme"],
+button[aria-label*="mode"] {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+html.dark .theme-toggle,
+html.dark button[aria-label*="theme"],
+html.dark button[aria-label*="mode"] {
+  background-color: #374151;
+  color: #fbbf24;
+}
+/* ----------------------------------------------
+   Footer 
+   ---------------------------------------------- */
+footer {
+  background-color: #111827; /* gray-900 */
+}
+
+footer p,
+footer * {
+  color: #ffffff;
+}
+
+html.dark footer p,
+html.dark footer * {
+  color: #d1d5db; /* gray-300 */
 }
