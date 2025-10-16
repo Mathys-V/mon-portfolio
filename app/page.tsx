@@ -80,14 +80,14 @@ export default function Home() {
       <section id="contact" className="mt-16 text-center">
         <h3 className="text-2xl font-bold mb-3 dark:text-gray-100">Contact</h3>
         <p className="text-gray-700 dark:text-gray-300">
-          Tu peux me contacter via{" "}
+          Vous pouvez me contacter par{" "}
           <a
             href="mailto:mathys.vanheulle@gmail.com"
             className="text-blue-600 hover:underline"
           >
-            mon mail
+            mail
           </a>{" "}
-          ou sur{" "}
+          ou via{" "}
           <a
             href="https://www.linkedin.com/in/mathys-vanheulle"
             target="_blank"
