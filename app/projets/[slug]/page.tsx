@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
 import * as React from "react";
+import { Swiper as SwiperType } from "swiper";
 
 // === TYPES ===
 interface ProjetInformatique {
@@ -117,7 +118,7 @@ interface Props {
 
 export default function ProjectPage({ params }: Props) {
   const { slug } = React.use(params);
-  const swiperRef = React.useRef<any>(null);
+  const swiperRef = React.useRef<SwiperType | null>(null);
 
   // Cherche le projet dans les deux listes
   const projet =
