@@ -27,6 +27,13 @@ const autresProjets = [
       "Infographie pédagogique expliquant de manière simple et visuelle le fonctionnement des cookies et des sessions sur le web.",
     image: "/images/InfographieCookies/infographie.jpg",
   },
+  {
+    slug: "Ecolumis-Innovation",
+    title: "Ecolumis – Innovation et communication",
+    description:
+      "Conception d’une innovation originale et création de supports de communication variés (emailing, affiche, flyer, réseaux sociaux).",
+    image: "/images/Ecolumis/carte-visite-1.jpg",
+  },
 ];
 
 export default function Projets() {
